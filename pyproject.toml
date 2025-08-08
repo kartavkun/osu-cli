@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "osu-cli"
+version = "0.1.0"
+description = "Simple osu! CLI tool"
+authors = [
+  { name="Kartavkun", email="nikitarobezhko@yandex.ru" },
+]
+readme = "README.md"
+license = {text = "GPL-3.0"}
+requires-python = ">=3.7"
+dependencies = [
+  "ossapi",
+  "colorama",
+  "httpx[http2]"
+]
+
+[project.scripts]
+osu-cli = "osucli.main:main"
