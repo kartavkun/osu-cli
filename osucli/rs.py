@@ -76,10 +76,10 @@ def recent_score_data():
     global_rank = user.statistics.global_rank
     country_rank = user.statistics.country_rank
 
-    print(f"{country} {username}: {player_pp}pp (#{global_rank} {country}{country_rank})")
-    print(f"{beatmap_artist} - {beatmap_title} [{beatmap_diff_name}] [{beatmap_diff_rate}★] | {beatmap_url}")
-    print(f"{rank} | {mods} | {total_score} | {acc * 100:.2f}%")
-    print(f"{pp}pp | {max_combo}x | {misses}❌")
-    print(f"{beatmap_length} |  CS: {beatmap_cs} AR: {beatmap_ar} OD: {beatmap_od} HP: {beatmap_hp} | BPM: {beatmap_bpm}")
+    print(f" > {country} {username}: {player_pp}pp (#{global_rank} {country}{country_rank})")
+    print(f" > {beatmap_artist} - {beatmap_title} [{beatmap_diff_name}] [{beatmap_diff_rate}★] | {beatmap_url}")
+    print(f" > {rank} | {mods} | {total_score} | {acc * 100:.2f}%")
+    print(f" > {pp}pp | {max_combo}x | {misses}❌")
+    print(f" > {beatmap_length} | CS: {beatmap_cs} AR: {beatmap_ar} OD: {beatmap_od} HP: {beatmap_hp} | BPM: {beatmap_bpm}")
 
     print()
