@@ -14,3 +14,4 @@ Currently, `osu-cli` only retrieves your most recent submitted score (similar to
 - Publish as an AUR package
 - Set up CI/CD (possibly via a custom repo for pacman, APT, and DNF)
 - Add more features based on user feedback
+- Integrate [osufetch](https://github.com/kartavkun/osufetch) as part of `osu-cli`
