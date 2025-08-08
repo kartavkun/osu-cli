@@ -4,21 +4,22 @@ from osucli.ascii_arts import get_ascii_art
 import httpx
 from colorama import Fore, Style
 
-def fetch_user_data(user_id_or_name):
+def fetch_user_data(user_id_or_name=None):
     config = load_config()
+    user_id_or_name = user_id_or_name or config.get("user_id")
+
     client_id = config["client_id"]
     client_secret = config["client_secret"]
 
     api = Ossapi(client_id, client_secret)
 
-    user_id = user_id_or_name if user_id_or_name else config["DEFAULT"].get("user_id")
+    user_id = user_id_or_name  # ВАЖНО: присваиваем user_id
 
     if not str(user_id).isdigit():
         user = api.user(user_id)
         user_id = user.id
     else:
         user = api.user(user_id)
-
     playmode = user.playmode
 
     url = f"https://osuworld.octo.moe/api/users/{user_id}?mode={playmode}"
