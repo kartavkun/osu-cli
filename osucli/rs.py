@@ -46,6 +46,8 @@ def recent_score_data():
     beatmap_diff_name = score.beatmap.version
     beatmap_diff_rate = score.beatmap.difficulty_rating
     beatmap_url = score.beatmap.url
+    beatmap_id = score.beatmapset.id
+    beatmap_mapper = score.beatmapset.creator
 
     beatmap_od = score.beatmap.accuracy
     beatmap_ar = score.beatmap.ar
@@ -75,6 +77,58 @@ def recent_score_data():
     player_pp = user.statistics.pp
     global_rank = user.statistics.global_rank
     country_rank = user.statistics.country_rank
+
+    return {
+        "pp": pp,
+        "acc": acc,
+        "misses": misses,
+        "max_combo": max_combo,
+        "beatmap_title": beatmap_title,
+        "beatmap_artist": beatmap_artist,
+        "beatmap_diff_name": beatmap_diff_name,
+        "beatmap_diff_rate": beatmap_diff_rate,
+        "beatmap_url": beatmap_url,
+        "beatmap_id": beatmap_id,
+        "beatmap_mapper": beatmap_mapper,
+        "beatmap_od": beatmap_od,
+        "beatmap_ar": beatmap_ar,
+        "beatmap_cs": beatmap_cs,
+        "beatmap_hp": beatmap_hp,
+        "beatmap_bpm": beatmap_bpm,
+        "beatmap_length": beatmap_length,
+        "country": country,
+        "username": username,
+        "player_pp": player_pp,
+        "global_rank": global_rank,
+        "country_rank": country_rank,
+        "mods": mods
+    }
+
+def print_score_data():
+    score_data = recent_score_data()
+
+    pp = score_data["pp"]
+    acc = score_data["acc"]
+    misses = score_data["misses"]
+    max_combo = score_data["max_combo"]
+
+    beatmap_title = score_data["beatmap_title"]
+    beatmap_artist = score_data["beatmap_artist"]
+    beatmap_diff_name = score_data["beatmap_diff_name"]
+    beatmap_diff_rate = score_data["beatmap_diff_rate"]
+    beatmap_url = score_data["beatmap_url"]
+
+    beatmap_od = score_data["beatmap_od"]
+    beatmap_ar = score_data["beatmap_ar"]
+    beatmap_cs = score_data["beatmap_cs"]
+    beatmap_hp = score_data["beatmap_hp"]
+    beatmap_bpm = score_data["beatmap_bpm"]
+    beatmap_length = score_data["beatmap_length"]
+
+    country = score_data["country"]
+    username = score_data["username"]
+    player_pp = score_data["player_pp"]
+    mods = score_data["mods"]
 
     print(f" > {country} {username}: {player_pp}pp (#{global_rank} {country}{country_rank})")
     print(f" > {beatmap_artist} - {beatmap_title} [{beatmap_diff_name}] [{beatmap_diff_rate}★] | {beatmap_url}")
