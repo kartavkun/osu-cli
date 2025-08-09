@@ -15,7 +15,7 @@ fi
 echo "📦 Installing $BIN_NAME latest release to $INSTALL_DIR..."
 
 # Получаем последнюю версию
-TAG=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | grep '"tag_name":' | cut -d '"' -f 4)
+# TAG=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | grep '"tag_name":' | cut -d '"' -f 4)
 
 if [ -z "$TAG" ]; then
   echo "❌ Failed to get latest release tag from GitHub"
@@ -23,7 +23,8 @@ if [ -z "$TAG" ]; then
 fi
 
 # Формируем URL
-BIN_URL="https://github.com/${REPO}/releases/download/${TAG}/${BIN_NAME}"
+# BIN_URL="https://github.com/${REPO}/releases/download/${TAG}/${BIN_NAME}"
+BIN_URL="https://github.com/${REPO}/releases/download/v0.1/${BIN_NAME}"
 
 # Качаем бинарник во временную директорию
 TMP_DIR=$(mktemp -d)
