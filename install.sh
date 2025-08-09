@@ -18,8 +18,8 @@ echo "📦 Installing $BIN_NAME latest release to $INSTALL_DIR..."
 # TAG=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | grep '"tag_name":' | cut -d '"' -f 4)
 
 # if [ -z "$TAG" ]; then
-  # echo "❌ Failed to get latest release tag from GitHub"
-  # exit 1
+# echo "❌ Failed to get latest release tag from GitHub"
+# exit 1
 # fi
 
 # Формируем URL
@@ -50,8 +50,8 @@ $cmd \"\$@\"
 }
 
 echo "🔗 Creating launcher scripts..."
-install_alias rs "/usr/local/bin/$BIN_NAME --rs"
-install_alias osufetch "/usr/local/bin/$BIN_NAME --fetch"
+install_alias rs "$HOME/.local/bin/$BIN_NAME --rs"
+install_alias osufetch "$HOME/.local/bin/$BIN_NAME --fetch"
 
 echo "✅ $BIN_NAME installed successfully!"
 echo "👉 You can now run '$BIN_NAME', 'rs' or 'osufetch' from your terminal."
