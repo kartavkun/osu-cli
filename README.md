@@ -1,17 +1,30 @@
 # osu-cli
 
-A simple CLI tool for checking your osu! stats — intended as a lightweight alternative to Discord bots like BathBot or owo!bot.
+A simple CLI tool for osu! statistics, that works locally.
 
-Currently, `osu-cli` only retrieves your most recent submitted score (similar to the `/rs` command in BathBot).
+## Installation
+
+### Arch Linux
+
+```bash
+yay -S osu-cli
+```
+
+### Other distros
+
+```bash
+curl -s https://raw.githubusercontent.com/kartavkun/osufetch/main/install.sh | bash
+```
 
 ## To-do
 
 - Add support for PP info:
-  - PP for SS
+  - ~~PP if SS~~
   - PP if FC
-  - PP on failed scores
+  - ~~PP on failed scores~~
+  - Make it more accurate
 - Generate an image showing your most recent score
 - Publish as an AUR package
 - Set up CI/CD (possibly via a custom repo for pacman, APT, and DNF)
 - Add more features based on user feedback
-- Integrate [osufetch](https://github.com/kartavkun/osufetch) as part of `osu-cli`
+- ~~Integrate [osufetch](https://github.com/kartavkun/osufetch) as part of `osu-cli`~~

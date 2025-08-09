@@ -1,6 +1,6 @@
 import argparse
 from osucli.fetch import fetch_user_data
-from osucli.rs import recent_score_data  # на будущее
+from osucli.rs import print_score_data  # на будущее
 
 def main():
     parser = argparse.ArgumentParser(description="osu! CLI tool")
@@ -13,6 +13,6 @@ def main():
     if args.fetch:
         fetch_user_data(args.user)  # Передаем None или ник/ID
     elif args.rs:
-        recent_score_data()
+        print_score_data()
     else:
         parser.print_help()

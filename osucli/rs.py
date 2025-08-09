@@ -16,25 +16,18 @@ def recent_score_data():
     else:
         user = api.user(user_id)
 
-    # playmode = user.playmode
     recent_score = api.user_scores(user_id, "recent", include_fails=True, limit=1, offset=0)
 
     if not recent_score:
         print("No recent scores found.")
-        return
+        return None
 
     score = recent_score[0]
 
     # Score info
-    if score.pp == None:
-        pp = 0
-    else:
-        pp = score.pp
+    pp = score.pp if score.pp is not None else None
     acc = score.accuracy
-    if score.passed == True:
-        rank = score.rank.value
-    else:
-        rank = "F"
+    rank = score.rank.value if score.passed else "F"
     mods = "".join([mod.acronym for mod in score.mods])
     misses = score.statistics.miss
     total_score = f"{score.total_score:,}"
@@ -101,11 +94,17 @@ def recent_score_data():
         "player_pp": player_pp,
         "global_rank": global_rank,
         "country_rank": country_rank,
-        "mods": mods
+        "mods": mods,
+        "rank": rank,
+        "total_score": total_score,
     }
 
 def print_score_data():
+    from osucli.pp_calc import pp_calc
+    pp_stat = pp_calc()
     score_data = recent_score_data()
+    if not score_data:
+        return
 
     pp = score_data["pp"]
     acc = score_data["acc"]
@@ -129,11 +128,24 @@ def print_score_data():
     username = score_data["username"]
     player_pp = score_data["player_pp"]
     mods = score_data["mods"]
+    global_rank = score_data["global_rank"]
+    country_rank = score_data["country_rank"]
+    rank = score_data["rank"]
+    total_score = score_data["total_score"]
+
+    if pp_stat:
+        pp = pp_stat.get("pp", "N/A")
+        pp_SS = pp_stat.get("pp_SS", "N/A")
+    else:
+        pp = "N/A"
+        pp_SS = "N/A"
+
+    # if pp is None:
+    #     pp = 0
 
     print(f" > {country} {username}: {player_pp}pp (#{global_rank} {country}{country_rank})")
     print(f" > {beatmap_artist} - {beatmap_title} [{beatmap_diff_name}] [{beatmap_diff_rate}★] | {beatmap_url}")
     print(f" > {rank} | {mods} | {total_score} | {acc * 100:.2f}%")
-    print(f" > {pp}pp | {max_combo}x | {misses}❌")
+    print(f" > {pp}pp/{pp_SS}pp | {max_combo}x | {misses}❌")
     print(f" > {beatmap_length} | CS: {beatmap_cs} AR: {beatmap_ar} OD: {beatmap_od} HP: {beatmap_hp} | BPM: {beatmap_bpm}")
-
     print()
