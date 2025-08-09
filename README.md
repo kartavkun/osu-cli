@@ -4,8 +4,7 @@ A simple CLI tool for osu! statistics, that works locally.
 
 ## Installation
 
-### Arch Linux
-
+### Arch Linux (SOON)
 ```bash
 yay -S osu-cli
 ```
@@ -13,7 +12,7 @@ yay -S osu-cli
 ### Other distros
 
 ```bash
-curl -s https://raw.githubusercontent.com/kartavkun/osufetch/main/install.sh | bash
+curl -s https://raw.githubusercontent.com/kartavkun/osu-cli/main/install.sh | bash
 ```
 
 ## To-do
