@@ -17,10 +17,10 @@ echo "📦 Installing $BIN_NAME latest release to $INSTALL_DIR..."
 # Получаем последнюю версию
 # TAG=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | grep '"tag_name":' | cut -d '"' -f 4)
 
-if [ -z "$TAG" ]; then
-  echo "❌ Failed to get latest release tag from GitHub"
-  exit 1
-fi
+# if [ -z "$TAG" ]; then
+  # echo "❌ Failed to get latest release tag from GitHub"
+  # exit 1
+# fi
 
 # Формируем URL
 # BIN_URL="https://github.com/${REPO}/releases/download/${TAG}/${BIN_NAME}"
